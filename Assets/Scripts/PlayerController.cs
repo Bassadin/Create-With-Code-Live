@@ -7,12 +7,20 @@ public class PlayerController : MonoBehaviour
     public float xRange = 12f;
     public float zRange = 1.5f;
 
+    public GameObject projectilePrefab;
+
     void Start()
     {
 
     }
 
     void Update()
+    {
+        handleMovement();
+        handleShooting();
+    }
+
+    void handleMovement()
     {
         // Horizontal
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -43,5 +51,11 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.Translate(Vector3.forward * verticalInput * moveSpeed * Time.deltaTime);
+    }
+
+    void handleShooting() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
     }
 }
