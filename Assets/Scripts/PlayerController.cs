@@ -2,10 +2,10 @@
 
 public class PlayerController : MonoBehaviour
 {
-    public float horizontalInput;
     public float moveSpeed = 5f;
 
     public float xRange = 12f;
+    public float zRange = 1.5f;
 
     void Start()
     {
@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        // Horizontal
+        float horizontalInput = Input.GetAxis("Horizontal");
 
         if (transform.position.x < -xRange)
         {
@@ -27,5 +28,20 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.Translate(Vector3.right * horizontalInput * moveSpeed * Time.deltaTime);
+
+        // Vertical
+        float verticalInput = Input.GetAxis("Vertical");
+
+        if (transform.position.z < -zRange)
+        {
+            verticalInput = Mathf.Clamp(verticalInput, 0, 1);
+        }
+
+        if (transform.position.z > zRange)
+        {
+            verticalInput = Mathf.Clamp(verticalInput, -1, 0);
+        }
+
+        transform.Translate(Vector3.forward * verticalInput * moveSpeed * Time.deltaTime);
     }
 }
