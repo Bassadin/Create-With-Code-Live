@@ -667,6 +667,7 @@ GameObject:
   - component: {fileID: 5807204498375653248}
   - component: {fileID: 5807204498366291852}
   - component: {fileID: 5807204499323469123}
+  - component: {fileID: 5618352990244824997}
   m_Layer: 0
   m_Name: Animal_Stag_02
   m_TagString: Untagged
@@ -681,7 +682,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5807204498375947530}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: -0, w: -0.0000001872535}
   m_LocalPosition: {x: 4.843216, y: 0, z: 11.269747}
   m_LocalScale: {x: 11, y: 11, z: 11}
   m_Children:
@@ -730,6 +731,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+--- !u!114 &5618352990244824997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807204498375947530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695b2300f1332e447b86019a7332aa0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5807204498375954574
 GameObject:
   m_ObjectHideFlags: 0
