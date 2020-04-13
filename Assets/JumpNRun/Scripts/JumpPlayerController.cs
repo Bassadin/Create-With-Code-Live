@@ -16,7 +16,7 @@ public class JumpPlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            playerRigidbody.AddForce(Vector3.up * jumpForce);
+            playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 }
