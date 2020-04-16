@@ -7,6 +7,7 @@ public class JumpPlayerController : MonoBehaviour
     public float gravityModifier;
     public bool gameOver;
     public ParticleSystem explosionParticle;
+    public ParticleSystem dirtParticle;
 
     private Rigidbody playerRigidbody;
 
@@ -27,17 +28,20 @@ public class JumpPlayerController : MonoBehaviour
             playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
             playerAnimator.SetTrigger("Jump_trig");
+            dirtParticle.Stop();
         }
     }
 
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Ground")) {
             isGrounded = true;
+            dirtParticle.Play();
         } else if (other.gameObject.CompareTag("Obstacle")) {
             gameOver = true;
             playerAnimator.SetBool("Death_b", true);
             playerAnimator.SetInteger("DeathType_int", 1);
             explosionParticle.Play();
+            dirtParticle.Stop();
         }
     }
 }
