@@ -7,16 +7,19 @@ public class MoveLeft : MonoBehaviour
     public float speed = 20f;
     private float lowerBound = -25f;
 
-    // Start is called before the first frame update
+    private JumpPlayerController playerControllerScript;
+
     void Start()
     {
-        
+        playerControllerScript = GameObject.Find("Player").GetComponent<JumpPlayerController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * speed);
+        if (!playerControllerScript.gameOver)
+        {
+            transform.Translate(Vector3.left * Time.deltaTime * speed);
+        }
 
         if (transform.position.y < lowerBound)
         {
