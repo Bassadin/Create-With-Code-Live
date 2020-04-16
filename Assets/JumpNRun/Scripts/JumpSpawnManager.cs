@@ -10,21 +10,26 @@ public class JumpSpawnManager : MonoBehaviour
     private float startDelay = 3f;
     private float repeatRate = 2.5f;
 
-    // Start is called before the first frame update
+    private JumpPlayerController playerControllerScript;
+
     void Start()
     {
+        playerControllerScript = GameObject.Find("Player").GetComponent<JumpPlayerController>();
         InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void SpawnObstacle()
     {
-        Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
+        if (!playerControllerScript.gameOver)
+        {
+            Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
+        }
     }
 
 }
