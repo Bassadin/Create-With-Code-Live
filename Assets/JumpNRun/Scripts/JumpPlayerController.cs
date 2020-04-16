@@ -5,6 +5,7 @@ public class JumpPlayerController : MonoBehaviour
     public float jumpForce;
     public bool isGrounded = true;
     public float gravityModifier;
+    public bool gameOver;
 
     private Rigidbody playerRigidbody;
 
@@ -25,6 +26,10 @@ public class JumpPlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        isGrounded = true;
+        if (other.gameObject.CompareTag("Ground")) {
+            isGrounded = true;
+        } else if (other.gameObject.CompareTag("Obstacle")) {
+            gameOver = true;
+        }
     }
 }
