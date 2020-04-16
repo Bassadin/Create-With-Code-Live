@@ -9,19 +9,23 @@ public class JumpPlayerController : MonoBehaviour
 
     private Rigidbody playerRigidbody;
 
+    private Animator playerAnimator;
+
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
+        playerAnimator = GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !gameOver)
         {
             playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+            playerAnimator.SetTrigger("Jump_trig");
         }
     }
 
@@ -30,6 +34,8 @@ public class JumpPlayerController : MonoBehaviour
             isGrounded = true;
         } else if (other.gameObject.CompareTag("Obstacle")) {
             gameOver = true;
+            playerAnimator.SetBool("Death_b", true);
+            playerAnimator.SetInteger("DeathType_int", 1);
         }
     }
 }
