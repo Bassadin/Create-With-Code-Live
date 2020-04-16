@@ -6,6 +6,7 @@ public class JumpPlayerController : MonoBehaviour
     public bool isGrounded = true;
     public float gravityModifier;
     public bool gameOver;
+    public ParticleSystem explosionParticle;
 
     private Rigidbody playerRigidbody;
 
@@ -36,6 +37,7 @@ public class JumpPlayerController : MonoBehaviour
             gameOver = true;
             playerAnimator.SetBool("Death_b", true);
             playerAnimator.SetInteger("DeathType_int", 1);
+            explosionParticle.Play();
         }
     }
 }
